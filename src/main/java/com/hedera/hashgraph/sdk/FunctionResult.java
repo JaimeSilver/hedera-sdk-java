@@ -74,6 +74,14 @@ public final class FunctionResult {
     }
 
     /**
+     * Get the nth value in the result as a fixed byte array of 32.
+     */    
+    public String getBytes32(int valIndex) {
+        var offset = getInt(valIndex);
+        var len = getIntValueAt(offset);
+        return getByteString(offset + 0, offset + 32 + len).toStringUtf8();
+    }
+    /**
      * Get the nth 32-byte value as an untyped byte string.
      */
     public ByteString getRawValue(int valIndex) {
